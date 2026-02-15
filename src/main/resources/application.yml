@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: room-ownerservice
+  datasource:
+    url: jdbc:postgresql://localhost:5432/dbRoomSeeker
+    username: postgres
+    password: Vp123456
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  r2dbc:
+    url: r2dbc:postgresql://localhost:5432/dbRoomSeeker
+    username: postgres
+    password: Vp123456
+    pool:
+      initial-size: 10
+      max-size: 20
+  webflux:
+    base-path: /api
+  autoconfigure:
+    exclude:
+      - org.springframework.ai.model.postgresml.autoconfigure.PostgresMlEmbeddingAutoConfiguration
+      - org.springframework.ai.vectorstore.pgvector.autoconfigure.PgVectorStoreAutoConfiguration
+      - org.springframework.ai.advisors.vectorstore.autoconfigure.VectorStoreAdvisorAutoConfiguration
+
